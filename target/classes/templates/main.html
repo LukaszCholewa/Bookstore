@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Księgarnia</title>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+<body>
+<div th:replace="szablon.html :: logo"></div>
+<div th:replace="szablon.html :: userMenu"></div>
+<div th:replace="szablon.html :: finderBar"></div>
+<div th:replace="szablon.html :: menu"></div>
+
+<div id="content">
+    <th:block th:each="currentBook : ${books}">
+        <div class="book">
+            <div class="title">
+                <div class="label">Tytuł:</div>
+                <div class="value" th:text="${currentBook.title}"></div>
+            </div>
+            <div class="isbn">
+                <div class="label">ISBN:</div>
+                <div class="value" th:text="${currentBook.isbn}"></div>
+            </div>
+            <div class="author">
+                <div class="label">Autor:</div>
+                <div class="value">
+                    <div class="author-name" th:text="${currentBook.author.name}"></div>
+                    <div class="author-surname" th:text="${currentBook.author.surname}"></div>
+                </div>
+                    <a th:href="@{/addToBasket/{id}(id=${currentBook.id})}">Do koszyka</a>
+            </div>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>

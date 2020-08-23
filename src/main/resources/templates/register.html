@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Księgarnia</title>
+    <link rel="stylesheet" type="text/css" href="register.css"/>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <script src="validator.js"></script>
+</head>
+<body>
+<div th:replace="szablon.html :: logo"></div>
+<div th:replace="szablon.html :: userMenu"></div>
+<form id="register-form" method="POST" th:object="${user}" name="registerForm" onsubmit="return validateForm()">
+    <input type="text" placeholder="login" th:field="*{login}"></br>
+    <input type="password" placeholder="hasło" th:field="*{password}" id="passwordField"></br>
+    <input type="password" placeholder="powtórz hasło" name="password2"></br>
+    <input type="submit" value="OK">
+</form>
+</body>
+</html>
